@@ -9,19 +9,24 @@ BetaWorld Library的Electron版本，以SQLite3为基本数据架构。
 
 未完待续....
 ## 编译
-安装依赖
+### 安装依赖
 > npm install
 
-运行
+### 运行
 > npm start
 
-编译
+### 编译
+#### 生成Windows版
 > npm run-script package
-
+#### 生成Linux版
 > npm run-script packagelinux
-
+#### 生成Mac版
 > npm run-script packagemac
-
+#### 打包Windows版为zip(需提前生成)
+> npm run-script zip
+#### 打包Linux版为zip(需提前生成)
+> npm run-script ziplinux
+#### 打包Mac版为zip(需提前生成)
 > npm run-script zipmac
 
 ## 依赖
