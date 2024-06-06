@@ -726,7 +726,7 @@
             }
             manflag = 0;
 
-            //$("#wiki_link").attr(href,'https://wiki.betaworld.org/index.php?search='+s[0][6])
+            //$("#wiki_link").attr(href,'https://www.betaworld.cn/index.php?search='+s[0][6])
             //添加相关的代码
         });
         ipcRenderer.on('searchlist', function (event, arg) {
@@ -827,9 +827,9 @@
         }
         function open_wiki_link() {
             if (textflag == 0) {
-                var link = 'https://wiki.betaworld.org/index.php?search=' + $('.search_box_title').html() + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                var link = 'https://www.betaworld.cn/index.php?search=' + $('.search_box_title').html() + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
             } else {
-                var link = 'https://wiki.betaworld.org/index.php?search=' + $(".bwdb_select_item[data-id='" + now_proid + "']").html() + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                var link = 'https://www.betaworld.cn/index.php?search=' + $(".bwdb_select_item[data-id='" + now_proid + "']").html() + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
             }
 
             link = link.replace('95:4.0', '95:4.00')//适配windows 95
@@ -862,18 +862,18 @@
                                 v1 = $(".bwdb_select_item[data-id='" + now_proid + "']").html()
                             }
                             if (v1 == "Windows Server LTSC") {
-                                link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             } else {
 
-                                link = 'https://wiki.betaworld.org/index.php?search=' + v1 + ' ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + v1 + ' ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                                 if (v1 == "Windows Server Semi-Annual Channel") {
                                     console.log("第一种特殊情况：Windows Server Semi-Annual Channel");
-                                    link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                    link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                                 }
 
                                 if (v1 == "Windows Server Essentials") {
                                     console.log("第二种特殊情况：Windows Server Semi-Annual Channel");
-                                    link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server ' + s + ' Essentials:' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                    link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server ' + s + ' Essentials:' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                                 }
                             }
                         } else {
@@ -883,9 +883,9 @@
                             if (k1.indexOf(s) != -1) {
                                 console.log(k2[k1.indexOf(s)]);
                                 if (textflag == 0) {
-                                    link = 'https://wiki.betaworld.org/index.php?search=' + $('.search_box_title').html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                    link = 'https://www.betaworld.cn/index.php?search=' + $('.search_box_title').html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                                 } else {
-                                    link = 'https://wiki.betaworld.org/index.php?search=' + $(".bwdb_select_item[data-id='" + now_proid + "']").html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                    link = 'https://www.betaworld.cn/index.php?search=' + $(".bwdb_select_item[data-id='" + now_proid + "']").html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                                 }
 
                             }
@@ -896,12 +896,12 @@
                             }
                             if (v1 == "Windows Server Semi-Annual Channel") {
                                 console.log("第一种特殊情况：Windows Server Semi-Annual Channel");
-                                link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             }
 
                             if (v1 == "Windows Server Essentials") {
                                 console.log("第二种特殊情况：Windows Server Semi-Annual Channel");
-                                link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server ' + s + ' Essentials:' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server ' + s + ' Essentials:' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             }
                         }
                     }
@@ -928,17 +928,17 @@
                         }
 
                         if (v1 == "Windows Server LTSC") {
-                            link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                            link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                         } else {
-                            link = 'https://wiki.betaworld.org/index.php?search=' + v1 + ' ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                            link = 'https://www.betaworld.cn/index.php?search=' + v1 + ' ' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             if (v1 == "Windows Server Semi-Annual Channel") {
                                 console.log("第一种特殊情况：Windows Server Semi-Annual Channel");
-                                link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             }
 
                             if (v1 == "Windows Server Essentials") {
                                 console.log("第二种特殊情况：Windows Server Semi-Annual Channel");
-                                link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server ' + s + ' Essentials:' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server ' + s + ' Essentials:' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             }
                         }
                     } else {
@@ -948,9 +948,9 @@
                         if (k1.indexOf(s) != -1) {
                             console.log(k2[k1.indexOf(s)]);
                             if (textflag == 0) {
-                                link = 'https://wiki.betaworld.org/index.php?search=' + $('.search_box_title').html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + $('.search_box_title').html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             } else {
-                                link = 'https://wiki.betaworld.org/index.php?search=' + $(".bwdb_select_item[data-id='" + now_proid + "']").html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                                link = 'https://www.betaworld.cn/index.php?search=' + $(".bwdb_select_item[data-id='" + now_proid + "']").html() + ' ' + k2[k1.indexOf(s)] + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                             }
 
                         }
@@ -960,7 +960,7 @@
                             v1 = $(".bwdb_select_item[data-id='" + now_proid + "']").html()
                         }
                         if (v1 == "Windows Server Semi-Annual Channel") {
-                            link = 'https://wiki.betaworld.org/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
+                            link = 'https://www.betaworld.cn/index.php?search=' + 'Windows Server v' + s + ':' + $("#ver_tag").children('.info_box_items_text').html().replace('#', '');
                         }
                     }
                 }
