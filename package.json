@@ -11,14 +11,17 @@
     "package_nonmanage": "electron-packager . BetaWorld_Library --platform=win32 --arch=x64 --icon=bwdb.ico --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --overwrite --win32metadata.CompanyName=\"BetaWorld\" --win32metadata.ProductName=\"BetaWorld Library\" --win32metadata.FileDescription=\"BetaWorld Library\" --ignore=\"(gallery/|manage)\" ",
     "packagelinux_nonmanage": "electron-packager . BetaWorld_Library --platform=linux --arch=x64 --icon=bwdb.ico --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage)\" --overwrite",
     "packagemac_nonmanage": "electron-packager . BetaWorld_Library --platform=darwin --arch=x64 --icon=./bwdb.icns --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage|settings.json)\" --overwrite",
+    "zip": "electron-installer-zip ./out/BetaWorld_Library-win32-x64 ./out/BetaWorld_Library-win32-x64.zip",
+    "ziplinux": "electron-installer-zip ./out/BetaWorld_Library-linux-x64 ./out/BetaWorld_Library-linux-x64.zip",
     "zipmac": "electron-installer-zip ./out/BetaWorld_Library-darwin-x64 ./out/BetaWorld_Library-darwin-x64.zip"
   },
   "devDependencies": {
     "electron": "^9.4.4",
-    "electron-packager": "^9.1.0"
+    "electron-packager": "^17.1.2"
   },
   "dependencies": {
     "adm-zip": "^0.4.16",
+    "electron-installer-zip": "^0.1.2",
     "electron-prompt": "^1.6.1",
     "images": "^3.2.3",
     "jquery": "^3.5.1",
