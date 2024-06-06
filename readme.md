@@ -30,17 +30,11 @@ BetaWorld Library的Electron版本，以SQLite3为基本数据架构。
 > npm run-script zipmac
 
 ## 依赖
-* sql.js
-* jquery
-* adm-zip
-* images
-* electron-prompt
+* sql.js@1.4.0
+* jquery@3.5.1
+* adm-zip@0.4.16
+* images@3.2.3
+* electron-prompt@1.6.1
 
 ## 鸣谢
 * 原作者slzKud
-* Macadmin
-* Driver1998
-* th1r5bvn23
-* qazmko1029
-* BlueRain
-* ygjsz
