@@ -45,7 +45,22 @@ jobs:
         run: npm run-script ziplinux
       - name: Pack for macos
         run: npm run-script zipmac
-      - name: Publish
-        run: npm publish
+      - name: Upload Windows Asset
+        uses: JasonEtco/upload-to-release@master
         env:
-          NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          args: ./out/BetaWorld_Library-win32-x64.zip
+      - name: Upload Linux Asset
+        uses: JasonEtco/upload-to-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          args: ./out/BetaWorld_Library-linux-x64.zip
+      - name: Upload Mac Asset
+        uses: JasonEtco/upload-to-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          args: ./out/BetaWorld_Library-darwin-x64.zip
+          
