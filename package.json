@@ -1,16 +1,22 @@
 {
   "name": "betaworld_library",
-  "version": "1.0.0",
+  "version": "1.0.1-73G04B",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "startmanage": "electron . --manage",
-    "package": "electron-packager . BetaWorld_Library --platform=win32 --arch=x64 --icon=bwdb.ico --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --overwrite --win32metadata.CompanyName=\"BetaWorld\" --win32metadata.ProductName=\"BetaWorld Library\" --win32metadata.FileDescription=\"BetaWorld Library\" --ignore=\"(gallery/)\" ",
-    "packagelinux": "electron-packager . BetaWorld_Library --platform=linux --arch=x64 --icon=bwdb.ico --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/)\" --overwrite",
-    "packagemac": "electron-packager . BetaWorld_Library --platform=darwin --arch=x64 --icon=bwdb.icns --out=./out --app-version=1.0.0.0--app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|settings.json)\" --overwrite",
-    "package_nonmanage": "electron-packager . BetaWorld_Library --platform=win32 --arch=x64 --icon=bwdb.ico --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --overwrite --win32metadata.CompanyName=\"BetaWorld\" --win32metadata.ProductName=\"BetaWorld Library\" --win32metadata.FileDescription=\"BetaWorld Library\" --ignore=\"(gallery/|manage)\" ",
-    "packagelinux_nonmanage": "electron-packager . BetaWorld_Library --platform=linux --arch=x64 --icon=bwdb.ico --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage)\" --overwrite",
-    "packagemac_nonmanage": "electron-packager . BetaWorld_Library --platform=darwin --arch=x64 --icon=./bwdb.icns --out=./out --app-version=1.0.0.0 --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage|settings.json)\" --overwrite",
+    "prepackage": "set ELECTRON_MIRROR=\"https://idk.minecraftisbest.top/\" & set version=\"1.0.1-73G04B\"",
+    "prepackagelinux": "set ELECTRON_MIRROR=\"https://idk.minecraftisbest.top/\" & set version=\"1.0.1-73G04B\"",
+    "prepackagemac": "set ELECTRON_MIRROR=\"https://idk.minecraftisbest.top/\" & set version=\"1.0.1-73G04B\"",
+    "prepackage_nonmanage": "set ELECTRON_MIRROR=\"https://idk.minecraftisbest.top/\" & set version=\"1.0.1-73G04B\"",
+    "prepackagelinux_nonmanage": "set ELECTRON_MIRROR=\"https://idk.minecraftisbest.top/\" & set version=\"1.0.1-73G04B\"",
+    "prepackagemac_nonmanage": "set ELECTRON_MIRROR=\"https://idk.minecraftisbest.top/\" & set version=\"1.0.1-73G04B\"",
+    "package": "electron-packager . BetaWorld_Library --platform=win32 --arch=x64 --icon=bwdb.ico --out=./out --app-version=%version% --app-copyright=\"Copyright(c) 2024 BetaWorld\" --overwrite --win32metadata.CompanyName=\"BetaWorld\" --win32metadata.ProductName=\"BetaWorld Library\" --win32metadata.FileDescription=\"BetaWorld Library\" --ignore=\"(gallery/)\" ",
+    "packagelinux": "electron-packager . BetaWorld_Library --platform=linux --arch=x64 --icon=bwdb.ico --out=./out --app-version=%version% --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/)\" --overwrite",
+    "packagemac": "electron-packager . BetaWorld_Library --platform=darwin --arch=x64 --icon=bwdb.icns --out=./out --app-version=%version%--app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|settings.json)\" --overwrite",
+    "package_nonmanage": "electron-packager . BetaWorld_Library --platform=win32 --arch=x64 --icon=bwdb.ico --out=./out --app-version=%version% --app-copyright=\"Copyright(c) 2024 BetaWorld\" --overwrite --win32metadata.CompanyName=\"BetaWorld\" --win32metadata.ProductName=\"BetaWorld Library\" --win32metadata.FileDescription=\"BetaWorld Library\" --ignore=\"(gallery/|manage)\" ",
+    "packagelinux_nonmanage": "electron-packager . BetaWorld_Library --platform=linux --arch=x64 --icon=bwdb.ico --out=./out --app-version=%version% --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage)\" --overwrite",
+    "packagemac_nonmanage": "electron-packager . BetaWorld_Library --platform=darwin --arch=x64 --icon=./bwdb.icns --out=./out --app-version=%version% --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage|settings.json)\" --overwrite",
     "zip": "electron-installer-zip ./out/BetaWorld_Library-win32-x64 ./out/BetaWorld_Library-win32-x64.zip",
     "ziplinux": "electron-installer-zip ./out/BetaWorld_Library-linux-x64 ./out/BetaWorld_Library-linux-x64.zip",
     "zipmac": "electron-installer-zip ./out/BetaWorld_Library-darwin-x64 ./out/BetaWorld_Library-darwin-x64.zip"
@@ -27,5 +33,9 @@
     "jquery": "^3.5.1",
     "jquery-editable-select": "^2.2.5",
     "sql.js": "^1.4.0"
+  },
+  "engines": {
+    "node": "= 14.19.0",
+    "npm": "= 6.14.16"
   }
 }

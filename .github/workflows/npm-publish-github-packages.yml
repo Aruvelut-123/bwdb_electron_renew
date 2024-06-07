@@ -8,17 +8,7 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.19.0
-      - run: npm install
-
   publish-gpr:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,12 +19,21 @@ jobs:
         with:
           node-version: 14.19.0
           registry-url: https://npm.pkg.github.com/
-      - run: npm run-script package
-      - run: npm run-script packagelinux
-      - run: npm run-script packagemac
-      - run: npm run-script zip
-      - run: npm run-script ziplinux
-      - run: npm run-script zipmac
-      - run: npm publish
+      - name: Install dependencies 📦️
+        run: npm install
+      - name: Build for windows
+        run: npm run-script package
+      - name: Build for linux
+        run: npm run-script packagelinux
+      - name: Build for macos
+        run: npm run-script packagemac
+      - name: Pack for windows
+        run: npm run-script zip
+      - name: Pack for linux
+        run: npm run-script ziplinux
+      - name: Pack for macos
+        run: npm run-script zipmac
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}
