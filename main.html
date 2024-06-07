@@ -33,7 +33,7 @@
             menu.append(new MenuItem({ label: convert_dymstrlist_to_string('仅显示有截图的Build', get_lang_now()), type: 'checkbox', click() { only_picflag = 1; ipcRenderer.send('getbuildstage', now_proid); } }));
             menu.append(new MenuItem({ type: 'separator' }));
         } else {
-            $('title').html('BetaWorld Library Lite')
+            $('title').html('BetaWorld Library Electron Remake')
         }
         if (fs.existsSync(get_path() + "/manage")) {
             menu.append(new MenuItem({ label: convert_dymstrlist_to_string('切换至数据库编辑模式', get_lang_now()), click() { ipcRenderer.send('reload', 'manage'); } }));
