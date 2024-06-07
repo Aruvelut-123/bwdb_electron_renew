@@ -33,18 +33,14 @@ jobs:
              sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys DFA175A75104960E &&
              sudo apt update &&
              sudo apt-get install --install-recommends winehq-stable
-      - name: Build for windows
-        run: npm run-script package
-      - name: Build for linux
-        run: npm run-script packagelinux
-      - name: Build for macos
-        run: npm run-script packagemac
-      - name: Pack for windows
-        run: npm run-script zip
-      - name: Pack for linux
-        run: npm run-script ziplinux
-      - name: Pack for macos
-        run: npm run-script zipmac
+      - name: Build
+        run: npm run-script package &&
+             npm run-script packagelinux &&
+             npm run-script packagemac
+      - name: Pack
+        run: npm run-script zip &&
+             npm run-script ziplinux &&
+             npm run-script zipmac
       - name: Upload Windows Asset
         uses: JasonEtco/upload-to-release@master
         env:
