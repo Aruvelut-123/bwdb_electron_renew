@@ -27,8 +27,8 @@
         var stdstrlist = [convert_dymstrlist_to_string("文件校验成功！", get_lang_now())
             , convert_dymstrlist_to_string("文件存在但校验不成功！", get_lang_now())
             , convert_dymstrlist_to_string("文件不存在，请重新下载！", get_lang_now())
-            , convert_dymstrlist_to_string('正在读取BetaWorld提供的标准校验文件....', get_lang_now())
-            , convert_dymstrlist_to_string('正在拉取BetaWorld提供的标准校验文件....', get_lang_now())]
+            , convert_dymstrlist_to_string('正在读取作者提供的标准校验文件....', get_lang_now())
+            , convert_dymstrlist_to_string('正在拉取作者提供的标准校验文件....', get_lang_now())]
         function getfilenum(path1) {
             var a = 0;
             return new Promise(resolve => {
@@ -109,7 +109,7 @@
                         $('#statustext').html(stdstrlist[4]);
                         $.ajax({
                             type: "GET",
-                            url: "https://www.betaworld.org/bwdb_electron/hash.json",
+                            url: "https://idk.minecraftisbest.top/database/v1.0.0.0/hash.json",
                             data: "", //预留填写数据库版本
                             async: false,
                             success: function (data) {
