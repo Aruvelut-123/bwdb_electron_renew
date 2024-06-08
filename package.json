@@ -17,6 +17,9 @@
     "package_nonmanage": "electron-packager . BetaWorld_Library --platform=win32 --arch=x64 --icon=bwdb.ico --out=./out --app-version=$version --app-copyright=\"Copyright(c) 2024 BetaWorld\" --overwrite --win32metadata.CompanyName=\"BetaWorld\" --win32metadata.ProductName=\"BetaWorld Library\" --win32metadata.FileDescription=\"BetaWorld Library\" --ignore=\"(gallery/|manage)\" ",
     "packagelinux_nonmanage": "electron-packager . BetaWorld_Library --platform=linux --arch=x64 --icon=bwdb.ico --out=./out --app-version=$version --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage)\" --overwrite",
     "packagemac_nonmanage": "electron-packager . BetaWorld_Library --platform=darwin --arch=x64 --icon=./bwdb.icns --out=./out --app-version=$version --app-copyright=\"Copyright(c) 2024 BetaWorld\" --ignore=\"(gallery/|manage|settings.json)\" --overwrite",
+    "prezip": "cp -r ./i18n ./out/BetaWorld_Library-win32-x64/i18n && cp ./DataBase.db ./out/BetaWorld_Library-win32-x64/DataBase.db",
+    "preziplinux": "cp -r ./i18n ./out/BetaWorld_Library-linux-x64/i18n && cp ./DataBase.db ./out/BetaWorld_Library-linux-x64/DataBase.db",
+    "prezipmac": "cp -r ./i18n ./out/BetaWorld_Library-darwin-x64/i18n && cp ./DataBase.db ./out/BetaWorld_Library-darwin-x64/DataBase.db",
     "zip": "electron-installer-zip ./out/BetaWorld_Library-win32-x64 ./out/BetaWorld_Library-win32-x64.zip",
     "ziplinux": "electron-installer-zip ./out/BetaWorld_Library-linux-x64 ./out/BetaWorld_Library-linux-x64.zip",
     "zipmac": "electron-installer-zip ./out/BetaWorld_Library-darwin-x64 ./out/BetaWorld_Library-darwin-x64.zip"
