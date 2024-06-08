@@ -211,6 +211,7 @@ function createAboutWindow() {
   //aboutWindow = new BrowserWindow ({width: 420, height:290,transparent: true, frame: false})
   aboutWindow = new BrowserWindow({
     width: 420,
+    //width: 840,
     height: 290,
     transparent: true,
     frame: false,
@@ -668,6 +669,8 @@ ipcMain.on('getbuildinfo', (event, args) => {
     db.close();
   });
 });
+
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 ipcMain.on('getbwdbversion', (event, args) => {
   //console.log('getbwdbversion is captured.args:'+args);
