@@ -899,5 +899,56 @@
                 "translate_text": "拉取失败!"
             }
         ]
+    },
+    {
+        "modulename": "update.html",
+        "staticlangstr": [
+            {
+                "strtype": "html",
+                "ori_text": "数据库更新检测",
+                "translate_text": "数据库更新检测",
+                "classStr": "lang_text"
+            },
+            {
+                "strtype": "html",
+                "ori_text": "<i class=\"fa fa-check-square-o\" aria-hidden=\"true\"></i> 开始",
+                "translate_text": "<i class=\"fa fa-check-square-o\" aria-hidden=\"true\"></i> 开始",
+                "classStr": "btn.btn-primary.pic_btn"
+            }
+        ],
+        "dymstr": [
+            {
+                "ori_text": "生成文件列表完成，正在比对....",
+                "translate_text": "生成文件列表完成，正在比对...."
+            },
+            {
+                "ori_text": "待命",
+                "translate_text": "待命"
+            },
+            {
+                "ori_text": "正在读取最新版本数据库....",
+                "translate_text": "正在读取最新版本数据库...."
+            },
+            {
+                "ori_text": "正在拉取最新版本数据库文件....",
+                "translate_text": "正在拉取最新版本数据库文件...."
+            },
+            {
+                "ori_text": "更新成功！",
+                "translate_text": "更新成功！"
+            },
+            {
+                "ori_text": "更新失败！",
+                "translate_text": "更新失败！"
+            },
+            {
+                "ori_text": "获取最新版数据库信息失败！",
+                "translate_text": "获取最新版数据库信息失败！"
+            },
+            {
+                "ori_text": "正在更新....",
+                "translate_text": "正在更新...."
+            }
+        ]
     }
 ]

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据库更新检测</title>
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bwdb.css">
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="static/js/i18n.tools.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script>
+        const ipcRenderer = require('electron').ipcRenderer;
+        const remote = require('electron').remote;
+        const fs = require('fs');
+        var fn = 0;
+        var sfn = 0;
+        var cfn = 0;
+        var wfn = 0;
+        var p = 0;
+        var a = [];
+        var flag = 0;
+        var stdstrlist = [convert_dymstrlist_to_string("更新成功！", get_lang_now())
+            , convert_dymstrlist_to_string("更新失败！", get_lang_now())
+            , convert_dymstrlist_to_string('正在读取最新版本数据库....', get_lang_now())
+            , convert_dymstrlist_to_string('正在拉取最新版本数据库文件....', get_lang_now())]
+        function getfilenum(path1) {
+            var a = 0;
+            return new Promise(resolve => {
+                fs.readdir(path1, function (err, files) {
+                    files.forEach(function (filename) {
+                        //获取当前文件的绝对路径
+                        a = a + 1
+                    });
+                    resolve(0);
+                });
+            }).then(resolve => {
+                return (a);
+            });
+        }
+        function dosomething() {
+            sfn = 0; wfn = 0; cfn = 0;
+            $('.tablelist').html('');
+            $('.progress-bar').attr('style', 'width:0%');
+            $('#statustext').html(convert_dymstrlist_to_string('正在更新....', get_lang_now()));
+            ipcRenderer.send('update', '');
+        }
+        function findbyfilename(filename) {
+            return a.find(function (x) { return x.filename == filename; })
+        }
+        $(document).ready(function () {
+            change_static_element(get_lang_now());
+            $('title').html(convert_dymstrlist_to_string_with_mod('数据库更新检测', get_lang_now(), "hash.html"));
+            $('.tablelist').html('');
+            $('#statustext').html(convert_dymstrlist_to_string('待命', get_lang_now()));
+            $('.progress-bar').attr('style', 'width:0%');
+            ipcRenderer.send('show-win', 'update');
+        });
+        ipcRenderer.on('update', function (event, arg) {
+            console.log(arg);
+            $('#statustext').html(stdstr1);
+            if (!fs.existsSync(join_path('databaseinfo.json'))) {
+                $('#statustext').html(stdstrlist[4]);
+                $.ajax({
+                    type: "GET",
+                    url: "https://idk.minecraftisbest.top/version.json",
+                    async: false,
+                    success: function (data) {
+                        f = data;
+                    }
+                });
+                console.log(f);
+                if (f == "") {
+                    alert(convert_dymstrlist_to_string('获取最新版数据库信息失败！', get_lang_now()));
+                    return 0;
+                }
+                var v = JSON.parse(f);
+                alert(v);
+            }
+            $('#statustext').html(convert_dymstrlist_to_string_include_array("更新成功！", get_lang_now(), [wfn]));
+        });
+    </script>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #bfbfbf;
+            text-align: left;
+        }
+
+        .lang_text {
+            align-items: flex-start;
+            margin: 15px;
+            user-select: none;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .jc-items {
+            display: flex;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: #bfbfbf;
+        }
+
+        .jc-icon {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .jc-filename {
+            margin-right: 5px;
+        }
+
+        .jc-filestatus {
+            width: 100%;
+        }
+
+        .correct {
+            color: #228B22;
+        }
+
+        .wrong {
+            color: #DC143C;
+        }
+
+        button.pic_btn {
+            background-color: #252526;
+            border: 1px solid #37373D;
+        }
+
+        button.pic_btn:hover {
+            background-color: #37373D;
+        }
+
+        .tablelist {
+            background-color: #37373D;
+            border: 1px solid #252526;
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background-color: #ececec;
+                color: #212529;
+            }
+
+            .lang_text {
+                color: rgb(57, 96, 192);
+            }
+
+            .jc-items {
+                color: #fff;
+            }
+
+            button.pic_btn {
+                background-color: #19478a;
+                border: 1px solid #fff;
+            }
+
+            button.pic_btn:hover {
+                background-color: rgb(57, 96, 192);
+            }
+
+            .tablelist {
+                background-color:#fff;
+                border: 1px solid #ececec;
+            }
+        }
+    </style>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+
+<body style="display: flex;flex-direction: column;">
+    <div class="lang_title">
+        <p class="lang_text">数据库更新检测</p>
+    </div>
+    <div class="progress"
+        style="margin-left:15px;margin-right:15px;margin-bottom:10px;margin-top:3px;border:1px solid #5f5f5f;">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+            style="width: 40%;">
+            <span class="sr-only">40% 完成</span>
+        </div>
+    </div>
+    <div
+        style="display: flex;flex-direction: unset;justify-content: space-between;margin-left: 15px;margin-right: 15px;margin-bottom: 10px;margin-top: 3px;">
+        <span style="display: flex;align-items: center;user-select: none;" id="statustext">正在检查最新版本...</span><button
+            type="button" class="btn btn-primary pic_btn" style="float: right;" onclick="dosomething();"><i
+                class="fa fa-check-square-o" aria-hidden="true"></i> 开始</button>
+    </div>
+    <div class="tablelist" style="height: 180px;margin-left: 15px;margin-right:15px;overflow:auto;user-select: none;">
+        <div class="jc-items">
+            <div class="jc-icon correct">
+                <i class="fa fa-file" aria-hidden="true"></i>
+            </div>
+            <div class="jc-filename correct">
+                DataBase.db
+            </div>
+            <div class="jc-filestatus correct">
+                数据库更新成功
+            </div>
+        </div>
+        <div class="jc-items">
+            <div class="jc-icon wrong">
+                <i class="fa fa-file" aria-hidden="true"></i>
+            </div>
+            <div class="jc-filename wrong">
+                DataBase.db
+            </div>
+            <div class="jc-filestatus wrong">
+                数据库更新失败
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

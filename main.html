@@ -87,6 +87,9 @@
             return this.replace(new RegExp(s1, "gm"), s2);
         }
         const shell = require('electron').shell;
+        function update_database() {
+            ipcRenderer.send('openupdatewindow', '');
+        }
         function hide_pic() {
             $(".info_box_pics").hide();
             $('#infobox_1').attr('class', 'info_listbox info_no_pic');
@@ -1008,6 +1011,7 @@
             }
         });
         function show_update() {
+            
             //alert($("#check_btn").attr('data-url'));
             shell.openExternal($("#check_btn").attr('data-url'));
         }
@@ -1057,7 +1061,8 @@
                     <div style="align-items: center;display: flex;">
                         <button class="btn btn-primary"
                             style="float:right;margin-right:25px;max-width: 220px;min-height: 30px;" id="check_btn"
-                            onclick="show_update();" data-url=""><i class="fa fa-cloud-download" aria-hidden="true"></i>
+                            onclick="update_database()"
+                            data-url=""><i class="fa fa-cloud-download" aria-hidden="true"></i>
                             检查数据库更新</button>
                     </div>
                 </div>
