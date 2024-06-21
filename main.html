@@ -88,7 +88,16 @@
         }
         const shell = require('electron').shell;
         function update_database() {
-            ipcRenderer.send('openupdatewindow', '');
+            console.log(os.platform);
+            if (os.platform == "darwin") {
+                alert("Not support for mac.");
+            } else if (os.platform == "linux") {
+                alert("Not support for linux.");
+            } else if (os.platform == "win32") {
+                shell.openExternal("https://idk.minecraftisbest.top/database_updater.exe");
+            } else {
+                alert("Not support for unknown system.");
+            }
         }
         function hide_pic() {
             $(".info_box_pics").hide();
