@@ -280,6 +280,34 @@
             {
                 "ori_text": "外观",
                 "translate_text": "外观"
+            },
+            {
+                "ori_text": "不支持Mac OS。",
+                "translate_text": "不支持Mac OS。"
+            },
+            {
+                "ori_text": "不支持Linux。",
+                "translate_text": "不支持Linux。"
+            },
+            {
+                "ori_text": "请手动下载更新程序并启动。",
+                "translate_text": "请手动下载更新程序并启动。"
+            },
+            {
+                "ori_text": "你想要复制数据库文件的绝对路径吗？",
+                "translate_text": "你想要复制数据库文件的绝对路径吗？"
+            },
+            {
+                "ori_text": "复制成功！",
+                "translate_text": "复制成功！"
+            },
+            {
+                "ori_text": "已取消。",
+                "translate_text": "已取消。"
+            },
+            {
+                "ori_text": "不支持未知操作系统。",
+                "translate_text": "不支持未知操作系统。"
             }
         ]
     },

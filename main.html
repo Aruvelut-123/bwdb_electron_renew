@@ -87,16 +87,29 @@
             return this.replace(new RegExp(s1, "gm"), s2);
         }
         const shell = require('electron').shell;
+        const { clipboard, app }=require("electron").remote;
+        let execPath;
+        execPath = path.dirname (app.getPath ('exe'));
         function update_database() {
             console.log(os.platform);
             if (os.platform == "darwin") {
-                alert("Not support for mac.");
+                alert(convert_dymstrlist_to_string('不支持Mac OS。', get_lang_now()));
             } else if (os.platform == "linux") {
-                alert("Not support for linux.");
+                alert(convert_dymstrlist_to_string('不支持Linux。', get_lang_now()));
             } else if (os.platform == "win32") {
+                alert(convert_dymstrlist_to_string('请手动下载更新程序并启动。', get_lang_now()));
+                var select = confirm(convert_dymstrlist_to_string('你想要复制数据库文件的绝对路径吗？', get_lang_now()));
+                if (select) {
+                    database_path = execPath+"\\DataBase.db"
+                    console.log(database_path);
+                    clipboard.writeText(database_path);
+                    alert(convert_dymstrlist_to_string('复制成功！', get_lang_now()));
+                } else {
+                    alert(convert_dymstrlist_to_string('已取消。', get_lang_now()));
+                }
                 shell.openExternal("https://idk.minecraftisbest.top/database_updater.exe");
             } else {
-                alert("Not support for unknown system.");
+                alert(convert_dymstrlist_to_string('不支持未知操作系统。', get_lang_now()));
             }
         }
         function hide_pic() {
