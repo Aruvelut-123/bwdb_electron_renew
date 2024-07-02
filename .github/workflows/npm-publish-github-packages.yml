@@ -1,6 +1,3 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 name: Generate Builds
 
 on:
@@ -43,22 +40,10 @@ jobs:
         run: npm run-script zip &&
              npm run-script ziplinux &&
              npm run-script zipmac
-      - name: Upload Windows Asset
+      - name: Upload Windows Assets
         uses: JasonEtco/upload-to-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          args: out/BetaWorld_Library-win32-x64.zip application/zip
-      - name: Upload Linux Asset
-        uses: JasonEtco/upload-to-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          args: out/BetaWorld_Library-linux-x64.zip application/zip
-      - name: Upload Mac Asset
-        uses: JasonEtco/upload-to-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          args: out/BetaWorld_Library-darwin-x64.zip application/zip
+          args: out/*.zip application/zip
           
