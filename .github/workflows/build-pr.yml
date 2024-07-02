@@ -1,0 +1,61 @@
+name: Build Pull Requests
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node 14.19.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.19.0
+          registry-url: https://npm.pkg.github.com/
+      - name: Install dependencies 📦️
+        run: npm install &&
+             npm uninstall sql.js &&
+             npm install sql.js@1.4.0
+      - name: Install Latest Wine
+        run: sudo dpkg --add-architecture i386 &&
+             sudo apt update &&
+             wget -qO- https://dl.winehq.org/wine-builds/winehq.key &&
+             sudo apt install software-properties-common &&
+             sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ bionic main' &&
+             wget -qO- https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key &&
+             sudo sh -c 'echo "deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./" > /etc/apt/sources.list.d/obs.list' &&
+             sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 76F1A20FF987672F &&
+             sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys DFA175A75104960E &&
+             sudo apt update &&
+             sudo apt-get install --install-recommends winehq-stable
+      - name: Build
+        run: npm run-script package &&
+             npm run-script packagelinux &&
+             npm run-script packagemac
+      - name: Pack
+        run: npm run-script zip &&
+             npm run-script ziplinux &&
+             npm run-script zipmac
+      - name: Upload Windows Assets on GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows
+          path: out/BetaWorld_Library-win32-x64.zip application/zip
+      - name: Upload Linux Assets on GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux
+          path: out/BetaWorld_Library-linux-x64.zip application/zip
+      - name: Upload Macos Assets on GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mac
+          path: out/BetaWorld_Library-darwin-x64.zip application/zip
+          

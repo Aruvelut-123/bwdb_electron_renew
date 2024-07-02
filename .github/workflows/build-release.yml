@@ -5,14 +5,17 @@ on:
     types: [created]
 
 jobs:
-  publish:
+  build:
+    name: Build and Release
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node 14.19.0
+        uses: actions/setup-node@v3
         with:
           node-version: 14.19.0
           registry-url: https://npm.pkg.github.com/
@@ -20,7 +23,7 @@ jobs:
         run: npm install &&
              npm uninstall sql.js &&
              npm install sql.js@1.4.0
-      - name: Install Wine
+      - name: Install Latest Wine
         run: sudo dpkg --add-architecture i386 &&
              sudo apt update &&
              wget -qO- https://dl.winehq.org/wine-builds/winehq.key &&
@@ -45,5 +48,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          args: out/*.zip application/zip
+          args: out/BetaWorld_Library-win32-x64.zip application/zip
+      - name: Upload Linux Assets
+        uses: JasonEtco/upload-to-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          args: out/BetaWorld_Library-linux-x64.zip application/zip
+      - name: Upload Mac Assets
+        uses: JasonEtco/upload-to-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          args: out/BetaWorld_Library-darwin-x64.zip application/zip
           
